@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Custom Greeting</title>
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#fff;color:#111;display:flex;min-height:100vh;align-items:center;justify-content:center}
+    .card{max-width:720px;padding:28px 24px;border:1px solid #eee;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.06);text-align:center}
+    h1{margin:0 0 12px;font-size:clamp(24px,4vw,36px)}
+    p{margin:8px 0 0;font-size:clamp(16px,2.4vw,20px);line-height:1.6}
+    .from{opacity:.7;margin-top:18px}
+    .gen{margin-top:24px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+    input,button{font-size:16px;padding:10px 12px;border-radius:10px;border:1px solid #ddd}
+    button{cursor:pointer}
+    .link{margin-top:10px;word-break:break-all;direction:ltr}
+    video{width:100%;border-radius:12px;margin:16px 0}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Optional video background -->
+    <video id="bgvid" autoplay muted playsinline loop poster="">
+      <!-- Add your own video file here if desired -->
+      <!-- <source src="greeting.mp4" type="video/mp4"> -->
+    </video>
+
+    <h1 id="headline"></h1>
+    <p id="bodyText"></p>
+    <p class="from" id="fromLine"></p>
+
+    <!-- Link generator -->
+    <div class="gen">
+      <input id="toInput" placeholder="Recipient name (to)" />
+      <input id="fromInput" placeholder="Sender name (from)" />
+      <button id="makeLink">Generate Link</button>
+    </div>
+    <div class="link" id="linkOut"></div>
+  </div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const to   = (params.get('to')   || 'Dear Friend').trim();
+  const from = (params.get('from') || 'From Me').trim();
+
+  const headline = `Happy Holidays, ${to}!`;
+  const body     = `Wishing you joy, health, and success – today and always.`;
+  const fromLine = `♥ ${from}`;
+
+  document.getElementById('headline').textContent = headline;
+  document.getElementById('bodyText').textContent = body;
+  document.getElementById('fromLine').textContent = fromLine;
+
+  document.getElementById('makeLink').addEventListener('click', () => {
+    const base = window.location.origin + window.location.pathname;
+    const toV   = document.getElementById('toInput').value.trim();
+    const fromV = document.getElementById('fromInput').value.trim();
+    const qp = new URLSearchParams();
+    if(toV)   qp.set('to', toV);
+    if(fromV) qp.set('from', fromV);
+    const url = qp.toString() ? `${base}?${qp.toString()}` : base;
+    const out = document.getElementById('linkOut');
+    out.textContent = url;
+  });
+</script>
+</body>
+</html>
