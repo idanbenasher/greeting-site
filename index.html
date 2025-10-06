@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ברכת יום נישואים</title>
+  <title>איחול נעים</title>
 
   <!-- Hebrew-compatible font (David Libre fallback) -->
   <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap" rel="stylesheet">
@@ -143,11 +143,11 @@
     </div>
 
     <h1 id="headline"></h1>
-    <p id="bodyText">מאחלים לכם שמחה, בריאות ואהבה – היום ותמיד.</p>
+    <p id="bodyText">מאחלים לכם לפחות עוד 4 נוספות, בואו לא נהיה גרידיים..</p>
 
-    <div class="gen" role="form" aria-label="צור קישור שיתוף">
+    <div class="gen" role="form" aria-label="שתף תלינק שתף">
       <input id="fromInput" placeholder="השם שלך (שולח/ת)" aria-label="השם שלך (שולח/ת)" />
-      <button id="makeLink" aria-label="צור קישור">צור קישור</button>
+      <button id="makeLink" aria-label="צור קישור">צור את הלינק בקשה</button>
     </div>
     <div class="actions hidden" id="actions">
       <div class="link" id="linkOut" aria-live="polite"></div>
@@ -157,23 +157,23 @@
       </a>
       <div class="copied hidden" id="copiedMsg">הועתק!</div>
     </div>
-    <div class="hint">שתפו את הקישור עם יובל ועידן</div>
+    <div class="hint">שלחו להם בלי להתבייש הם ישמחו</div>
   </div>
 
 <script>
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   //  CHANGE THIS to your target WhatsApp number (international format, no "+", no dashes)
-  const WHATSAPP_NUMBER = "972501234567";
+  const WHATSAPP_NUMBER = "972508807508";
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   const params = new URLSearchParams(window.location.search);
-  const from = (params.get('from') || 'מישהו שאוהב אתכם').trim();
+  const from = (params.get('from') || 'מישהו שחולה עליכם').trim();
 
   function renderHeadline(sender){
     const fixedNames = 'יובל ועידן';
-    const safeSender = sender || 'מישהו שאוהב אתכם';
+    const safeSender = sender || 'מישהו שחולה עליכם';
     document.getElementById('headline').textContent =
-      `${fixedNames}, ${safeSender} מאחל/ת לכם יום נישואים שמח!`;
+      `${fixedNames}, ${safeSender} מאחל/ת לכם חגיגות 4 שנים על הכיפ כיפאק!`;
   }
   renderHeadline(from);
 
