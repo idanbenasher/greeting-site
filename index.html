@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>איחול נעים</title>
+  <title>ברכת יום נישואים</title>
 
   <!-- Hebrew-compatible font (David Libre fallback) -->
   <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap" rel="stylesheet">
@@ -34,6 +34,7 @@
       overflow-x:hidden;
     }
 
+    /* Confetti overlay */
     #confetti{
       position:fixed;
       inset:0;
@@ -64,10 +65,31 @@
       text-align:center;
       background:#fff;
     }
+
+    /* Responsive video on top */
+    .videoWrap{
+      position:relative;
+      width:100%;
+      max-width:820px;
+      aspect-ratio:16/9;
+      margin:0 auto 16px auto;
+      background:#fff;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid var(--border);
+    }
+    .videoWrap video{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
     h1{margin:0 0 12px;font-size:clamp(22px,4.2vw,40px);line-height:1.25}
     p{margin:8px 0 0;font-size:clamp(15px,2.2vw,19px);line-height:1.6;color:#8a2b4a}
     .gen{margin-top:24px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-    input,button{
+    input,button,.btn-link{
       font-size:16px;
       padding:10px 12px;
       border-radius:10px;
@@ -78,21 +100,25 @@
       border-color:#f4a4c0;
       color:#4a1b2b;
     }
-    button{
+    button,.btn-link{
       cursor:pointer;
       background:var(--btn-bg);
       color:var(--btn-fg);
       border:1px solid var(--btn-border);
-      transition:transform .04s ease, filter .2s ease;
+      transition:transform .04s ease, filter .2s ease, opacity .2s ease;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
-    button:active{transform:translateY(1px)}
-    button:hover{filter:brightness(1.05)}
+    button:active,.btn-link:active{transform:translateY(1px)}
+    button:hover,.btn-link:hover{filter:brightness(1.05)}
 
     .actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:8px}
     .link{margin-top:10px;word-break:break-all;direction:ltr;color:#bf1650}
     .hint{color:var(--muted);font-size:14px;margin-top:6px}
     .hidden{display:none}
-    video{width:100%;border-radius:12px;margin:16px 0;max-height:360px;object-fit:cover}
+    .disabled{opacity:.55;pointer-events:none}
     .copied{font-size:14px;color:#2e7d32;margin-top:6px}
   </style>
 </head>
@@ -100,34 +126,54 @@
   <img id="confetti" src="confetti.gif" alt="" aria-hidden="true">
 
   <div class="card">
-    <video id="bgvid" autoplay muted playsinline loop poster="">
-      <!-- <source src="greeting.mp4" type="video/mp4"> -->
-    </video>
+
+    <!-- VIDEO SECTION ON TOP
+         Replace "greeting.mp4" with your own file name and upload it to the same folder as index.html.
+         Notes:
+         - 'muted' + 'autoplay' helps with mobile autoplay.
+         - 'controls' lets users play with sound.
+         - 'playsinline' keeps video inline on iPhone.
+    -->
+    <div class="videoWrap">
+      <video id="greetVideo" autoplay muted playsinline loop controls poster="">
+        <!-- <source src="greeting.mp4" type="video/mp4"> -->
+        <!-- Fallback text -->
+        הדפדפן שלך אינו תומך בניגון וידאו.
+      </video>
+    </div>
 
     <h1 id="headline"></h1>
-    <p id="bodyText">מאחלים לכם לפחות עוד 4 נוספות, בואו לא נהיה גרידיים.</p>
+    <p id="bodyText">מאחלים לכם שמחה, בריאות ואהבה – היום ותמיד.</p>
 
-    <div class="gen" role="form" aria-label="תביא תלינק">
+    <div class="gen" role="form" aria-label="צור קישור שיתוף">
       <input id="fromInput" placeholder="השם שלך (שולח/ת)" aria-label="השם שלך (שולח/ת)" />
-      <button id="makeLink" aria-label="תביא נו">צור קישור</button>
+      <button id="makeLink" aria-label="צור קישור">צור קישור</button>
     </div>
     <div class="actions hidden" id="actions">
       <div class="link" id="linkOut" aria-live="polite"></div>
       <button id="copyBtn" aria-label="העתק קישור">העתק</button>
+      <a id="waBtn" class="btn-link disabled" href="#" target="_blank" rel="noopener noreferrer" aria-label="שלח בוואטסאפ">
+        שלח ב‑WhatsApp
+      </a>
       <div class="copied hidden" id="copiedMsg">הועתק!</div>
     </div>
     <div class="hint">שתפו את הקישור עם יובל ועידן</div>
   </div>
 
 <script>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  //  CHANGE THIS to your target WhatsApp number (international format, no "+", no dashes)
+  const WHATSAPP_NUMBER = "972501234567";
+  // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
   const params = new URLSearchParams(window.location.search);
-  const from = (params.get('from') || 'מישהו שחולה עליכם').trim();
+  const from = (params.get('from') || 'מישהו שאוהב אתכם').trim();
 
   function renderHeadline(sender){
     const fixedNames = 'יובל ועידן';
-    const safeSender = sender || 'מישהו שחולה עליכם';
+    const safeSender = sender || 'מישהו שאוהב אתכם';
     document.getElementById('headline').textContent =
-      `${fixedNames}, ${safeSender} מאחל/ת לכם 4 שנים בסדר גמור!`;
+      `${fixedNames}, ${safeSender} מאחל/ת לכם יום נישואים שמח!`;
   }
   renderHeadline(from);
 
@@ -137,6 +183,12 @@
   const actions = document.getElementById('actions');
   const copyBtn = document.getElementById('copyBtn');
   const copiedMsg = document.getElementById('copiedMsg');
+  const waBtn = document.getElementById('waBtn');
+
+  function buildWaLink(sharedUrl, senderName){
+    const msg = `יובל ועידן, ${senderName || 'מישהו שאוהב אתכם'} מאחל/ת לכם יום נישואים שמח!\n${sharedUrl}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
 
   function generateLink(){
     const base = window.location.origin + window.location.pathname;
@@ -146,6 +198,10 @@
     const url = qp.toString() ? `${base}?${qp.toString()}` : base;
     out.textContent = url;
     actions.classList.remove('hidden');
+
+    // enable WhatsApp button
+    waBtn.classList.remove('disabled');
+    waBtn.href = buildWaLink(url, fromV);
   }
   makeLinkBtn.addEventListener('click', generateLink);
   fromInput.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ generateLink(); } });
