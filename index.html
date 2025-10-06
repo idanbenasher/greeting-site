@@ -40,10 +40,9 @@
 
 <script>
   const params = new URLSearchParams(window.location.search);
-  const to   = (params.get('to')   || 'Dear Friend').trim();
   const from = (params.get('from') || 'From Me').trim();
 
-  const headline = `מאחל/ת לכם מזל טוב, ${to}!`;
+  const headline = `מאחל/ת לכם מזל טוב, ${from}!`;
   const body     = `לכבוד 4 שנות זוגיות מלבבת`;
   const fromLine = `♥ ${from}`;
 
