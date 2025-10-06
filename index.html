@@ -135,12 +135,20 @@
          - 'playsinline' keeps video inline on iPhone.
     -->
     <div class="videoWrap">
-      <video id="greetVideo" autoplay muted playsinline loop controls poster="">
-        <!-- <source src="greeting.mp4" type="video/mp4"> -->
-        <!-- Fallback text -->
-        הדפדפן שלך אינו תומך בניגון וידאו.
-      </video>
-    </div>
+  <video
+    id="greetVideo"
+    src="greeting.mp4"
+    autoplay
+    muted
+    playsinline
+    loop
+    controls
+    preload="metadata"
+    poster=""
+  >
+    הדפדפן שלך אינו תומך בניגון וידאו.
+  </video>
+</div>
 
     <h1 id="headline"></h1>
     <p id="bodyText">מאחלים לכם לפחות עוד 4 נוספות, בואו לא נהיה גרידיים..</p>
