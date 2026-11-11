@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#194A38">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="קניות">
+  <meta name="description" content="רשימת קניות חכמה ומסודרת לפי אזורים בסופר">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <style>
+:root{--pine:#194a38;--pine-dark:#103728;--mint:#dcf2df;--cream:#f8f9f4;--ink:#1b2c23;--muted:#77857b;--line:#e4ebe4;--radius:20px}*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;-webkit-tap-highlight-color:transparent}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #82b89d;outline-offset:2px}.app-shell{max-width:680px;margin:auto;min-height:100svh;padding-bottom:calc(133px + env(safe-area-inset-bottom))}.site-header{height:85px;display:flex;justify-content:space-between;align-items:center;padding:14px 20px}.brand{display:flex;align-items:center;gap:10px}.brand-symbol{height:42px;width:42px;display:grid;place-items:center;background:#e1eee0;border-radius:14px;font-size:23px}.brand strong{display:block;font-size:20px;font-weight:830;line-height:1.1}.brand span{display:block;font-size:12px;color:#879489;margin-top:4px}.saved-marker{display:flex;gap:6px;align-items:center;color:#527862;background:#ecf4ea;border-radius:99px;padding:8px 10px;font-size:11px;white-space:nowrap}.saved-dot{display:inline-block;background:#58ab6b;width:6px;height:6px;border-radius:50%}main{padding:0 16px}.hero{position:relative;background:var(--pine);border-radius:25px;color:#fff;padding:25px 24px 21px;overflow:hidden;box-shadow:0 7px 20px rgba(27,72,49,.11)}.hero-deco{position:absolute;left:-10px;top:0;font-size:150px;line-height:1;color:#285a43;pointer-events:none;transform:rotate(18deg)}.eyebrow{margin:0 0 6px;font-size:11px;font-weight:750;letter-spacing:.4px;color:#c6e4c8}.hero h1{position:relative;margin:0 0 25px;font-size:clamp(27px,7.2vw,37px);letter-spacing:-1.1px;line-height:1.27;font-weight:820}.hero h1 em{font-style:normal;color:#c1e795}.hero-progress{position:relative}.progress-head,.progress-foot{display:flex;align-items:center;justify-content:space-between;gap:9px}.progress-head{margin-bottom:9px;font-size:12px;font-weight:630}.progress-head strong{font-size:14px}.progress-track{background:#396953;height:9px;border-radius:15px;overflow:hidden}.progress-fill{height:100%;width:0;background:#c7f1a2;border-radius:15px;transition:width .25s ease}.progress-foot{margin-top:10px;color:#d5e6d8;font-size:10px}.toolbar{display:flex;gap:7px;overflow:auto;padding:16px 0 19px;scrollbar-width:none}.toolbar::-webkit-scrollbar{display:none}.chip{flex:none;border:1px solid #dde7dc;background:white;color:#466552;border-radius:12px;padding:10px 11px;font-size:12px;font-weight:690;white-space:nowrap}.chip.active{background:#e2f2e4;border-color:#b6d8c2;color:#23583d}.chip span{margin-left:3px;font-size:15px}.section-heading{display:flex;align-items:end;justify-content:space-between;gap:8px;margin:0 2px 14px}.eyebrow.dark{color:#849886;font-size:10px}.section-heading h2{margin:0;font-size:22px;letter-spacing:-.6px}.section-count{font-size:11px;color:#809084;padding-bottom:4px}.category-list{display:flex;flex-direction:column;gap:12px}.department{background:white;border:1px solid var(--line);border-radius:21px;overflow:hidden;box-shadow:0 3px 12px rgba(33,62,45,.027)}.dept-head{width:100%;text-align:right;border:0;background:transparent;display:flex;align-items:center;gap:11px;padding:17px 16px;color:var(--ink)}.dept-symbol{width:42px;height:42px;display:grid;place-items:center;flex:none;border-radius:14px;font-size:23px;background:var(--category-bg,#ecf4e6)}.dept-copy{flex:1;min-width:0}.dept-copy strong{display:block;font-size:16px;letter-spacing:-.15px}.dept-copy small{display:block;color:#89978b;font-size:11px;margin-top:2px}.dept-chevron{font-size:19px;color:#94a299;transition:transform .2s}.department.collapsed .dept-chevron{transform:rotate(90deg)}.dept-content{padding:0 16px 10px}.department.collapsed .dept-content{display:none}.subheading{display:flex;gap:9px;align-items:center;margin:7px 1px 5px;color:#8d9d91;font-weight:750;letter-spacing:.18px;font-size:10px}.subheading::after{content:"";height:1px;flex:1;background:#edf0eb}.item{display:flex;gap:10px;min-height:45px;padding:7px 0;align-items:center;border-bottom:1px solid #f3f5f0}.item:last-child{border-bottom:0}.item-check{appearance:none;-webkit-appearance:none;display:grid;place-items:center;flex:none;width:23px;height:23px;border:1.8px solid #becbc0;background:white;border-radius:8px;margin:0;cursor:pointer}.item-check:checked{background:#398e62;border-color:#398e62}.item-check:checked::after{content:"✓";font-size:15px;color:white;font-weight:800;line-height:1}.item-label{min-width:0;flex:1;cursor:pointer;padding:3px 0;overflow-wrap:anywhere}.item-label strong{display:block;font-weight:580;font-size:14px}.item-label small{display:block;font-size:11px;color:#8b978e;margin-top:2px}.item.completed .item-label strong{text-decoration:line-through;color:#a7b2a8}.item.completed .item-label small{color:#b2bab2}.item-edit{border:0;background:transparent;color:#9aa99d;display:grid;place-items:center;width:34px;height:35px;flex:none;border-radius:9px;font-size:19px}.item-edit:active{background:#eff5f0}.all-done{border:1px dashed #aed6b5;background:#f4fbf2;margin-top:14px;border-radius:18px;text-align:center;padding:32px 20px;font-size:36px}.all-done h3{font-size:19px;margin:5px}.all-done p{font-size:13px;color:#63806b;margin:0}.help-tip{font-size:11px;color:#98a59a;line-height:1.7;margin:19px 6px 24px}.bottom-dock{position:fixed;z-index:10;bottom:0;left:0;right:0;padding:12px max(16px,calc((100vw - 648px)/2)) calc(9px + env(safe-area-inset-bottom));background:rgba(250,251,247,.95);border-top:1px solid #e3eae0;box-shadow:0 -6px 26px rgba(30,60,36,.06);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}.add-form{display:flex;gap:8px;align-items:center}.add-field{height:51px;background:white;border:1px solid #dce6dc;border-radius:15px;display:flex;align-items:center;gap:9px;padding:0 13px;flex:1;min-width:0}.add-field span{font-size:24px;color:#75a184}.add-field input{outline:0!important;border:0;min-width:0;width:100%;font-size:16px;color:var(--ink);background:transparent}.add-field input::placeholder{color:#a1afa1}.add-submit,.primary-button{background:var(--pine);color:white;border:0;border-radius:15px;padding:0 18px;height:51px;font-size:14px;font-weight:750;white-space:nowrap}.add-submit span{font-size:15px;margin-right:2px}.dock-bottom{display:flex;align-items:center;justify-content:space-between;margin:7px 5px 0;color:#9ba99c;font-size:10px}.text-button{background:none;border:0;color:#65836e;padding:2px;font-size:10px}.edit-dialog{width:min(94vw,470px);max-height:calc(100svh - 30px);border:1px solid #e2eae0;border-radius:22px;box-shadow:0 12px 60px #12291a44;padding:0;overflow:auto;background:#fff;color:var(--ink)}.edit-dialog::backdrop{background:rgba(11,29,18,.45);backdrop-filter:blur(2px)}.dialog-inner{padding:23px;display:flex;flex-direction:column;gap:9px}.dialog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.dialog-top h2{font-size:21px;margin:0}.icon-close{border:0;border-radius:11px;background:#f2f5f0;color:#5d6c60;width:34px;height:34px}.dialog-inner label{margin-top:8px;font-size:12px;font-weight:750;color:#526d59}.dialog-inner label small{font-size:11px;color:#9ba99f;font-weight:400}.dialog-inner input,.dialog-inner select{border-radius:11px;border:1px solid #dce6dd;background:#fcfdfa;padding:12px 10px;min-height:44px;font-size:16px;color:#27392b}.dialog-actions{display:flex;gap:10px;justify-content:space-between;margin-top:17px}.danger-button{border:0;color:#b85d58;background:#fff3f1;border-radius:12px;padding:11px 13px;font-size:12px}.dialog-description{color:#738676;font-size:13px;line-height:1.6;margin:3px 0 8px}.option-button{width:100%;padding:14px;border-radius:12px;background:#f6f9f5;border:1px solid #e2ebdf;color:#345942;font-size:14px;text-align:right}.danger-text{color:#b85d58;background:#fff7f6}.toast{position:fixed;z-index:90;bottom:calc(138px + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:#213b2a;color:white;padding:11px 17px;border-radius:12px;box-shadow:0 5px 22px #0003;max-width:calc(100% - 34px);font-size:13px;text-align:center;transition:opacity .2s,transform .2s}.toast.show{opacity:1;transform:translate(-50%,0)}.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);border:0}@media(min-width:680px){.site-header{padding-inline:16px}.hero{padding:34px}.category-list{display:grid;grid-template-columns:1fr 1fr;align-items:start}.department{break-inside:avoid}.dept-content{padding-bottom:16px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
+
+[hidden]{display:none!important}
+
+</style>
+  <title>קניות — הרשימה שלי</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-symbol" aria-hidden="true">🛒</div>
+        <div><strong>קניות</strong><span>הרשימה שלי</span></div>
+      </div>
+      <div class="saved-marker"><span class="saved-dot"></span> נשמר באייפון</div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-label="התקדמות הקניות">
+        <div class="hero-deco" aria-hidden="true">✳</div>
+        <p class="eyebrow">יוצאים לסופר?</p>
+        <h1>הכול ברשימה.<br><em>בלי לשכוח כלום.</em></h1>
+        <div class="hero-progress">
+          <div class="progress-head"><span id="progress-label">0 מתוך 29 בסל</span><strong id="progress-percent">0%</strong></div>
+          <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+          <div class="progress-foot"><span id="remaining-label">29 מוצרים נשארו</span><span>עוד קצת וסיימנו ✨</span></div>
+        </div>
+      </section>
+
+      <section class="toolbar" aria-label="אפשרויות לרשימה">
+        <button id="hide-done" class="chip" type="button" aria-pressed="false"><span aria-hidden="true">◉</span> הצג הכול</button>
+        <button id="share-list" class="chip" type="button"><span aria-hidden="true">↗</span> שתף רשימה</button>
+        <button id="reset-checks" class="chip" type="button"><span aria-hidden="true">↺</span> נקה סימונים</button>
+      </section>
+
+      <div class="section-heading"><div><p class="eyebrow dark">לפי סדר האזורים בסופר</p><h2>המחלקות שלי</h2></div><span id="dept-count" class="section-count">0 מחלקות</span></div>
+      <div id="categories" class="category-list"></div>
+      <div id="all-done" class="all-done" hidden>🎉<h3>סיימת הכול!</h3><p>כל המוצרים ברשימה מסומנים. אפשר להציג פריטים שנקנו או לאפס סימונים לקנייה הבאה.</p></div>
+      <p class="help-tip">💡 פריט חדש ממוין אוטומטית. אם הוא לא זוהה, אפשר לבחור מחלקה דרך כפתור העריכה.</p>
+    </main>
+
+    <footer class="bottom-dock">
+      <form id="add-form" class="add-form" autocomplete="off">
+        <label for="new-item" class="visually-hidden">שם מוצר חדש</label>
+        <div class="add-field"><span aria-hidden="true">＋</span><input id="new-item" name="item" type="text" enterkeyhint="done" placeholder="מה צריך לקנות?" maxlength="110" required></div>
+        <button type="submit" class="add-submit">הוסף <span aria-hidden="true">↵</span></button>
+      </form>
+      <div class="dock-bottom"><span>מחלקה תיבחר אוטומטית ✨</span><button id="more-options" type="button" class="text-button">גיבוי ואפשרויות ···</button></div>
+    </footer>
+  </div>
+
+  <dialog id="edit-dialog" class="edit-dialog">
+    <form id="edit-form" class="dialog-inner" method="dialog">
+      <div class="dialog-top"><h2>עריכת מוצר</h2><button class="icon-close" id="close-dialog" type="button" aria-label="סגור">✕</button></div>
+      <label for="edit-name">שם המוצר</label><input id="edit-name" type="text" maxlength="110" required>
+      <label for="edit-note">כמות / הערה <small>(לא חובה)</small></label><input id="edit-note" type="text" maxlength="120" placeholder="למשל: 2 × 500 גרם">
+      <label for="edit-department">מחלקה בסופר</label><select id="edit-department"></select>
+      <label for="edit-subcategory">תת־קטגוריה</label><select id="edit-subcategory"></select>
+      <div class="dialog-actions"><button type="button" id="delete-item" class="danger-button">מחק מוצר</button><button id="save-edit" type="submit" class="primary-button">שמור שינויים</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="options-dialog" class="edit-dialog">
+    <div class="dialog-inner">
+      <div class="dialog-top"><h2>גיבוי ואפשרויות</h2><button id="close-options" class="icon-close" type="button" aria-label="סגור">✕</button></div>
+      <p class="dialog-description">הרשימה נשמרת במכשיר הזה בלבד. היא לא מסתנכרנת אוטומטית עם מכשירים אחרים.</p>
+      <button id="export-list" class="option-button" type="button">↓ שמירת גיבוי לקובץ</button>
+      <button id="import-list" class="option-button" type="button">↑ שחזור מקובץ גיבוי</button>
+      <input id="import-file" type="file" accept="application/json,.json" hidden>
+      <button id="restore-default" class="option-button danger-text" type="button">↺ שחזור רשימת הקניות המקורית</button>
+    </div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+'use strict';
+
+const STORAGE_KEY = 'smart-shopping-list-he-v1';
+const DEPARTMENTS = [
+  {id:'vegetables', name:'ירקות', icon:'🥬', bg:'#edf5e4', groups:['ירקות לסלט','ירקות לבישול']},
+  {id:'herbs', name:'עשבי תיבול', icon:'🌿', bg:'#e7f4e8', groups:['עשבי תיבול טריים','עשבים ארומטיים']},
+  {id:'fruit', name:'פירות', icon:'🍌', bg:'#fff3da', groups:['פירות טריים']},
+  {id:'meat', name:'קצבייה ועוף', icon:'🥩', bg:'#fae9e5', groups:['בשר בקר','עוף','דגים']},
+  {id:'dairy', name:'מוצרי חלב וביצים', icon:'🧀', bg:'#fff1e1', groups:['גבינות','חלב ויוגורט','ביצים']},
+  {id:'frozen', name:'קפואים ומצוננים', icon:'❄️', bg:'#e5f1fa', groups:['בצקים','מוצרים קפואים','מוצרים מצוננים']},
+  {id:'pantry', name:'מוצרי מדף', icon:'🫙', bg:'#f4eade', groups:['שימורים, מחיות ורטבים','אורז, פסטה וקטניות','קפה ותה','מוצרי אפייה ותבלינים','שמנים וממרחים']},
+  {id:'bakery', name:'לחם ומאפים', icon:'🥖', bg:'#f8eddf', groups:['לחמים ומאפים']},
+  {id:'paper', name:'נייר וניקיון', icon:'🧻', bg:'#eaf0fa', groups:['מוצרי נייר','חומרי ניקיון']},
+  {id:'home', name:'כלי בית וטקסטיל', icon:'🧺', bg:'#f3eafa', groups:['טקסטיל','כלים ואביזרים']},
+  {id:'other', name:'אחר — צריך למיין', icon:'📋', bg:'#edf0ed', groups:['פריטים למיון']}
+];
+const RULES = [
+  ['herbs','עשבי תיבול טריים',/פטרוזיל|כוסבר|עירית|שמיר|בזיליקום|נענע|מליסה|שיבא/],
+  ['herbs','עשבים ארומטיים',/טימין|קורנית|רוזמרין|מרווה|אורגנו|זעתר|עלי דפנה/],
+  ['paper','מוצרי נייר',/נייר סופג|נייר טואלט|נייר מטבח|גליל נייר|מגבות נייר|טישו|ממחט|מפיות/],
+  ['paper','חומרי ניקיון',/נוזל כלים|סבון כלים|אקונומיקה|חומר ניקוי|סקוץ|ספוג ניקוי|אבקת כביסה|נוזל כביסה|מרכך כביסה|שקיות אשפה|מסיר שומנים/],
+  ['home','טקסטיל',/מגבת|חיתול|טטרה|סדין|מטלית|סמרטוט|בד לניקוי/],
+  ['home','כלים ואביזרים',/ניילון נצמד|נייר אלומיניום|תבנית|קופסאות|כלים חד פעמ|שקיות אוכל|נייר אפייה|סכום חד/],
+  ['meat','עוף',/חזה עוף|עוף|פרגית|כנפיים|שוקיים|כרעיים|הודו|שניצל טרי/],
+  ['meat','דגים',/סלמון|דניס|אמנון|מושט|דג טרי|פילה דג|דגים/],
+  ['meat','בשר בקר',/בשר טחון|בשר|בקר|אנטריקוט|אסאדו|סטייק|צלעות|סינטה|כתף בקר|שפונדרה|קבב/],
+  ['dairy','ביצים',/ביצים|ביצה/],
+  ['dairy','גבינות',/גבינ|קוטג|קוטג׳|בולגרית|פטה|פרמזן|מוצרלה|ריקוטה|צפתית|לאבנה|חלומי|מסקרפונה/],
+  ['dairy','חלב ויוגורט',/חלב(?! קוקוס)|יוגורט|שמנת|אשל|רוויון|קפיר|חמאה/],
+  ['frozen','בצקים',/בצק עלים|בצק פילו|בצק פריך|בצק קפוא|מלאווח|ג׳חנון/],
+  ['frozen','מוצרים קפואים',/קפוא|גלידה|ארטיק|ציפס קפוא|צ'יפס קפוא/],
+  ['frozen','מוצרים מצוננים',/טופו|חומוס מוכן|סלט מוכן|רביולי טרי/],
+  ['pantry','שימורים, מחיות ורטבים',/מחית עגבני|רסק עגבני|עגבניות מרוסקות|שימור|רוטב|קטשופ|חרדל|מיונז|סויה|חומץ|חלב קוקוס|קרם קוקוס|טחינה|פסטו|מחית/],
+  ['pantry','אורז, פסטה וקטניות',/אורז|פסטה|ספגטי|פתיתים|קוסקוס|בורגול|קינואה|עדשים|חומוס יבש|שעועית יבשה|אטריות|נודלס|גריסים/],
+  ['pantry','קפה ותה',/קפה|תה שחור|תה ירוק|חליטה|קפסולות/],
+  ['pantry','מוצרי אפייה ותבלינים',/קמח|סוכר|שומשום|אבקת אפייה|סודה לשתייה|שמרים|קקאו|שוקולד|וניל|קינמון|פפריקה|כמון|פלפל שחור|מלח|תבלין|אגוז|שקדים/],
+  ['pantry','שמנים וממרחים',/שמן|ממרח|חמאת בוטנים|דבש|סילאן|ריבה/],
+  ['bakery','לחמים ומאפים',/לחם|לחמני|פיתה|בגט|טורטייה|חלה|קרואסון|פוקצ|מאפה/],
+  ['vegetables','ירקות לסלט',/מלפפון|עגבני|פלפל|גמבה|חסה|אבוקדו|צנונית|בצל ירוק|עלי בייבי|רוקט|ארוגולה/],
+  ['vegetables','ירקות לבישול',/תפוח אדמה|תפוחי אדמה|בטטה|גזר|כרוב|ברוקולי|קישוא|חציל|בצל|שום|סלרי|סלק|פטריות|דלעת|דלורית|שעועית ירוקה|אספרגוס|לפת|שומר|תירס|אפונה|תרד|כרישה|קולרבי|ארטישוק/],
+  ['fruit','פירות טריים',/בננ|תפוח עץ|תפוחים|תפוז|קלמנטינ|לימון|ליים|אשכולית|מנגו|אננס|אגס|אפרסק|נקטרינה|שזיף|ענב|תות|אבטיח|מלון|קיווי|רימון|פומלה|פסיפלורה|תמר|אוכמניות|פטל/]
+];
+const DEFAULT_PRODUCTS = [
+  ['שעועית ירוקה','vegetables','ירקות לבישול'],
+  ['מלפפונים','vegetables','ירקות לסלט'],
+  ['עגבניות','vegetables','ירקות לסלט'],
+  ['כרוב','vegetables','ירקות לבישול'],
+  ['בננות','fruit','פירות טריים'],
+  ['טימין','herbs','עשבים ארומטיים'],
+  ['עירית','herbs','עשבי תיבול טריים'],
+  ['פלפלים בשלושה צבעים','vegetables','ירקות לסלט'],
+  ['פלפל חריף','vegetables','ירקות לסלט'],
+  ['בשר טחון','meat','בשר בקר','2 × 500 גרם'],
+  ['חזה עוף דק','meat','עוף'],
+  ['מחית עגבניות','pantry','שימורים, מחיות ורטבים'],
+  ['תפוחי אדמה','vegetables','ירקות לבישול'],
+  ['גזר','vegetables','ירקות לבישול'],
+  ['סלרי','vegetables','ירקות לבישול'],
+  ['כרובית','vegetables','ירקות לבישול'],
+  ['סלק','vegetables','ירקות לבישול'],
+  ['בצק עלים','frozen','בצקים'],
+  ['שומשום','pantry','מוצרי אפייה ותבלינים'],
+  ['גבינה בולגרית','dairy','גבינות'],
+  ['קוטג׳','dairy','גבינות'],
+  ['חלב','dairy','חלב ויוגורט'],
+  ['קפה שחור','pantry','קפה ותה'],
+  ['בד חיתול טטרה','home','טקסטיל'],
+  ['נייר טואלט','paper','מוצרי נייר'],
+  ['נייר סופג','paper','מוצרי נייר'],
+  ['לבדוק אם יש גליל נייר זול לניקוי מטבח','paper','מוצרי נייר'],
+  ['פטרוזיליה','herbs','עשבי תיבול טריים'],
+  ['כוסברה','herbs','עשבי תיבול טריים']
+];
+
+const $ = (selector) => document.querySelector(selector);
+const makeId = () => (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + '-' + Math.random().toString(36).slice(2);
+const defaultItems = () => DEFAULT_PRODUCTS.map(([name,department,group,note]) => ({id:makeId(),name,department,group,note:note||'',done:false}));
+const departmentFor = (id) => DEPARTMENTS.find(d=>d.id===id) || DEPARTMENTS[DEPARTMENTS.length-1];
+const classify = (name) => {const cleaned=name.trim().toLowerCase();for(const [department,group,pattern] of RULES){if(pattern.test(cleaned)) return {department,group}}return {department:'other',group:'פריטים למיון'}};
+const escapeHTML = (value) => String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+
+function loadState(){try{const saved=localStorage.getItem(STORAGE_KEY);if(!saved)return {items:defaultItems(),hideDone:false};const obj=JSON.parse(saved);if(!obj||!Array.isArray(obj.items))throw new Error('Invalid state');return {items:obj.items.filter(i=>i && typeof i.name==='string').map(i=>{const dep=departmentFor(i.department);return {id:String(i.id||makeId()),name:i.name.slice(0,110),note:String(i.note||'').slice(0,120),department:dep.id,group:dep.groups.includes(i.group)?i.group:dep.groups[0],done:Boolean(i.done)}}),hideDone:Boolean(obj.hideDone)}}catch(err){return {items:defaultItems(),hideDone:false}}}
+let state = loadState();
+let editingId = null;
+const closedDepartments = new Set();
+let toastTimer = null;
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));$('.saved-marker').innerHTML='<span class="saved-dot"></span> נשמר באייפון'}catch(err){$('.saved-marker').textContent='⚠ לא ניתן לשמור';notify('האחסון במכשיר אינו זמין')}}
+function notify(msg){const node=$('#toast');node.textContent=msg;node.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove('show'),2400)}
+const countLabel = (n) => n===1?'מוצר אחד':`${n} מוצרים`;
+
+function render(){
+  const done=state.items.filter(i=>i.done).length;
+  const total=state.items.length;
+  const left=total-done;
+  const percentage=total?Math.round(done*100/total):0;
+  $('#progress-label').textContent=`${done} מתוך ${total} בסל`;
+  $('#progress-percent').textContent=`${percentage}%`;
+  $('#progress-fill').style.width=`${percentage}%`;
+  $('#remaining-label').textContent=left===0?'כל המוצרים נאספו!':`${countLabel(left)} נשארו`;
+  const hide=$('#hide-done');hide.classList.toggle('active',state.hideDone);hide.setAttribute('aria-pressed',String(state.hideDone));hide.innerHTML=state.hideDone?'✓ הסתר שנקנו':'◉ הצג הכול';
+  const html=[];let visibleGroups=0;
+  for(const dep of DEPARTMENTS){
+    const all=state.items.filter(i=>i.department===dep.id);
+    if(!all.length)continue;
+    const visible=state.hideDone?all.filter(i=>!i.done):all;
+    if(!visible.length)continue;
+    visibleGroups++;
+    const collected=all.filter(i=>i.done).length;
+    const parts=[];
+    for(const group of dep.groups){
+      const members=visible.filter(i=>i.group===group);
+      if(!members.length)continue;
+      parts.push(`<div class="subheading">${escapeHTML(group)}</div>`);
+      for(const item of members){
+        parts.push(`<div class="item ${item.done?'completed':''}" data-item-id="${escapeHTML(item.id)}">
+          <input class="item-check" id="item-${escapeHTML(item.id)}" type="checkbox" ${item.done?'checked':''} aria-label="סמן ${escapeHTML(item.name)} כנקנה">
+          <label class="item-label" for="item-${escapeHTML(item.id)}"><strong>${escapeHTML(item.name)}</strong>${item.note?`<small>${escapeHTML(item.note)}</small>`:''}</label>
+          <button class="item-edit" type="button" aria-label="עריכת ${escapeHTML(item.name)}">⋯</button></div>`);
+      }
+    }
+    html.push(`<section class="department ${closedDepartments.has(dep.id)?'collapsed':''}" style="--category-bg:${dep.bg}" data-department="${dep.id}">
+      <button class="dept-head" type="button" aria-expanded="${!closedDepartments.has(dep.id)}">
+      <span class="dept-symbol" aria-hidden="true">${dep.icon}</span>
+      <span class="dept-copy"><strong>${escapeHTML(dep.name)}</strong><small>${collected} מתוך ${all.length} נאספו</small></span><span class="dept-chevron" aria-hidden="true">⌄</span></button>
+      <div class="dept-content">${parts.join('')}</div></section>`);
+  }
+  $('#categories').innerHTML=html.join('');
+  $('#dept-count').textContent=`${visibleGroups} מחלקות`;
+  $('#all-done').hidden=!(left===0 && total>0 && state.hideDone);
+  if(total===0)$('#categories').innerHTML='<div class="all-done">🧺<h3>הרשימה ריקה</h3><p>אפשר להוסיף מוצר ראשון בשדה למטה.</p></div>';
+}
+
+$('#add-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const field=$('#new-item');const name=field.value.trim();if(!name)return;
+  const location=classify(name);const item={id:makeId(),name,note:'',done:false,...location};
+  state.items.push(item);save();render();field.value='';
+  const dep=departmentFor(location.department);
+  notify(location.department==='other'?'הפריט נוסף ל״אחר״ — אפשר למיין בעריכה':`נוסף ל${dep.name} · ${location.group}`);
+});
+$('#hide-done').addEventListener('click',()=>{state.hideDone=!state.hideDone;save();render()});
+$('#reset-checks').addEventListener('click',()=>{
+  if(!state.items.some(i=>i.done)){notify('אין סימונים לנקות');return}
+  if(!confirm('לנקות את כל הסימונים ולהתחיל קנייה חדשה?'))return;
+  state.items.forEach(i=>i.done=false);save();render();notify('כל הסימונים נוקו');
+});
+$('#categories').addEventListener('change',e=>{
+  if(!e.target.matches('.item-check'))return;
+  const row=e.target.closest('[data-item-id]');const item=state.items.find(i=>i.id===row?.dataset.itemId);
+  if(item){item.done=e.target.checked;save();render()}
+});
+$('#categories').addEventListener('click',e=>{
+  const header=e.target.closest('.dept-head');
+  if(header){const id=header.closest('[data-department]').dataset.department;closedDepartments.has(id)?closedDepartments.delete(id):closedDepartments.add(id);render();return}
+  const edit=e.target.closest('.item-edit');if(edit){openEditor(edit.closest('[data-item-id]').dataset.itemId)}
+});
+
+function fillDepartments(){
+  $('#edit-department').innerHTML=DEPARTMENTS.map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
+}
+function updateSubcategories(selected){
+  const dep=departmentFor($('#edit-department').value);
+  $('#edit-subcategory').innerHTML=dep.groups.map(g=>`<option value="${escapeHTML(g)}">${escapeHTML(g)}</option>`).join('');
+  if(dep.groups.includes(selected))$('#edit-subcategory').value=selected;
+}
+function openEditor(id){
+  const item=state.items.find(i=>i.id===id);if(!item)return;editingId=id;
+  $('#edit-name').value=item.name;$('#edit-note').value=item.note||'';
+  $('#edit-department').value=item.department;updateSubcategories(item.group);
+  $('#edit-dialog').showModal();
+}
+fillDepartments();
+$('#edit-department').addEventListener('change',()=>updateSubcategories());
+$('#close-dialog').addEventListener('click',()=>$('#edit-dialog').close());
+$('#edit-form').addEventListener('submit',e=>{
+  e.preventDefault();const item=state.items.find(i=>i.id===editingId);if(!item)return;
+  const name=$('#edit-name').value.trim();if(!name)return;
+  item.name=name;item.note=$('#edit-note').value.trim();item.department=$('#edit-department').value;item.group=$('#edit-subcategory').value;
+  save();render();$('#edit-dialog').close();notify('השינויים נשמרו');
+});
+$('#delete-item').addEventListener('click',()=>{
+  const item=state.items.find(i=>i.id===editingId);if(!item)return;
+  if(!confirm(`למחוק את ״${item.name}״ מהרשימה?`))return;
+  state.items=state.items.filter(i=>i.id!==editingId);save();render();$('#edit-dialog').close();notify('הפריט נמחק');
+});
+
+$('#share-list').addEventListener('click',async()=>{
+  const lines=['🛒 רשימת הקניות שלנו'];
+  for(const dep of DEPARTMENTS){const products=state.items.filter(i=>i.department===dep.id&&!i.done);if(products.length){lines.push('',dep.name);for(const p of products)lines.push('☐ '+p.name+(p.note?' — '+p.note:''))}}
+  if(lines.length===1)lines.push('הכול נקנה! 🎉');
+  const text=lines.join('\n');
+  try{
+    if(navigator.share){await navigator.share({title:'רשימת קניות',text});return}
+    await navigator.clipboard.writeText(text);notify('הרשימה הועתקה — אפשר להדביק בוואטסאפ');
+  }catch(err){if(err.name!=='AbortError')notify('לא ניתן לשתף כרגע')}
+});
+
+$('#more-options').addEventListener('click',()=>$('#options-dialog').showModal());
+$('#close-options').addEventListener('click',()=>$('#options-dialog').close());
+$('#export-list').addEventListener('click',()=>{
+  const file=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),...state},null,2)],{type:'application/json'});
+  const link=document.createElement('a');link.href=URL.createObjectURL(file);link.download='shopping-list-backup.json';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(link.href),2000);
+  notify('נוצר קובץ גיבוי');
+});
+$('#import-list').addEventListener('click',()=>$('#import-file').click());
+$('#import-file').addEventListener('change',async e=>{
+  const file=e.target.files?.[0];if(!file)return;
+  try{const obj=JSON.parse(await file.text());if(!obj||!Array.isArray(obj.items)||obj.items.length>5000)throw new Error('Bad backup');
+    const parsed=obj.items.map(i=>{if(!i||typeof i.name!=='string'||!i.name.trim())throw new Error('Bad item');const dep=departmentFor(i.department);return {id:String(i.id||makeId()),name:i.name.slice(0,110),note:String(i.note||'').slice(0,120),department:dep.id,group:dep.groups.includes(i.group)?i.group:dep.groups[0],done:Boolean(i.done)}});
+    if(!confirm('לשחזר את הגיבוי? הפעולה תחליף את הרשימה הנוכחית.'))return;
+    state={items:parsed,hideDone:Boolean(obj.hideDone)};save();render();$('#options-dialog').close();notify('הרשימה שוחזרה בהצלחה');
+  }catch(err){notify('קובץ הגיבוי אינו תקין')}finally{e.target.value=''}
+});
+$('#restore-default').addEventListener('click',()=>{
+  if(!confirm('למחוק את הרשימה הנוכחית ולחזור ל־29 פריטי הרשימה המקורית?'))return;
+  state={items:defaultItems(),hideDone:false};closedDepartments.clear();save();render();$('#options-dialog').close();notify('הרשימה המקורית שוחזרה');
+});
+window.addEventListener('storage',e=>{if(e.key===STORAGE_KEY){state=loadState();render()}});
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+save();render();
+
+</script>
+</body>
+</html>
